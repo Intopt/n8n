@@ -1,5 +1,5 @@
 # Build stage
-FROM node:18-bullseye-slim AS builder
+FROM node:22-bullseye-slim AS builder
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y \
@@ -15,11 +15,11 @@ COPY . .
 
 # Install dependencies and build
 RUN npm install -g pnpm && \
-    pnpm install --frozen-lockfile && \
+    pnpm install --no-frozen-lockfile && \
     pnpm run build
 
 # Production stage
-FROM node:18-bullseye-slim
+FROM node:22-bullseye-slim
 
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y \
