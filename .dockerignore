@@ -4,6 +4,10 @@
 # Ignore everything first
 *
 
+# Allow package manifest
+!package.json
+!pnpm-lock.yaml
+
 # === n8n main image (docker/images/n8n/Dockerfile) ===
 !compiled
 !compiled/**
