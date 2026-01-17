@@ -60,7 +60,7 @@
     "@biomejs/biome": "^1.9.0",
     "@n8n/eslint-config": "workspace:*",
     "@types/jest": "^29.5.3",
-    "@types/node": "*",
+    "@types/node": "^20.17.50",
     "@types/supertest": "^6.0.3",
     "babel-plugin-transform-import-meta": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -109,7 +109,6 @@
     "tar-fs": "2.1.4",
     "tslib": "^2.6.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "5.9.2",
     "vue-tsc": "^2.2.8",
     "gaxios": ">=7.1.1",
     "google-gax": "^4.3.7",
@@ -133,7 +132,6 @@
     "qs@6": "6.14.1",
     "@smithy/config-resolver": ">=4.4.0",
     "@rudderstack/rudder-sdk-node@<=3.0.0": "3.0.0",
-    "eslint": "9.29.0"
     },
     "patchedDependencies": {
       "bull@4.16.4": "patches/bull@4.16.4.patch",
