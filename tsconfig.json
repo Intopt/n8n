@@ -1,4 +1,23 @@
 {
-	"extends": "./packages/@n8n/typescript-config/tsconfig.common.json",
-	"exclude": ["**/dist/**/*", "**/node_modules/**/*"]
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src",
+    "packages/*/src"
+  ],
+  "exclude": [
+    "**/dist/**/*",
+    "**/node_modules/**/*"
+  ]
 }
