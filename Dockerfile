@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20-bullseye AS builder
+FROM node:22-bullseye AS builder
 WORKDIR /data
 
 # Copy manifests first for caching
@@ -16,7 +16,7 @@ COPY . .
 RUN pnpm run build
 
 # Production stage
-FROM node:20-bullseye AS production
+FROM node:22-bullseye AS production
 WORKDIR /data
 
 # Copy only what’s needed from builder
