@@ -1,5 +1,4 @@
-# Whitelist approach: ignore everything, then allow only what Docker builds need
-# This reduces build context from ~900MB to just what's required
+# Whitelist approach: ignore everything, then allow only what Docker build needs
 
 # Ignore everything by default
 *
