@@ -8,6 +8,9 @@
 !package.json
 !pnpm-lock.yaml
 
+# Allow TypeScript config
+!tsconfig.json
+
 # === n8n main image (docker/images/n8n/Dockerfile) ===
 !compiled
 !compiled/**
