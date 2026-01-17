@@ -8,7 +8,6 @@
   },
   "packageManager": "pnpm@10.22.0",
   "scripts": {
-    "prepare": "node scripts/prepare.mjs",
     "build": "turbo run build",
     "build:n8n": "node scripts/build-n8n.mjs",
     "build:deploy": "node scripts/build-n8n.mjs",
