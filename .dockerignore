@@ -9,7 +9,7 @@
 !pnpm-lock.yaml
 !tsconfig.json
 
-# Source code (monorepo packages)
+# Source code (monorepo packages and compiled output)
 !packages
 !packages/**
 !compiled
