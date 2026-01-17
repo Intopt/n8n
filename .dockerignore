@@ -4,12 +4,12 @@
 # Ignore everything by default
 *
 
-# === Core manifests ===
+# Core manifests
 !package.json
 !pnpm-lock.yaml
 !tsconfig.json
 
-# === Source code (monorepo packages) ===
+# Source code (monorepo packages)
 !packages
 !packages/**
 !compiled
@@ -18,14 +18,12 @@
 !dist/**
 !THIRD_PARTY_LICENSES.md
 
-# === Docker build files (entrypoints, configs) ===
+# Docker build files
 !docker
 !docker/**
-!docker/images
-!docker/images/**
 !docker/images/n8n/docker-entrypoint.sh
 !docker/images/runners/n8n-task-runners.json
 
-# === GitHub workflows (optional, only if needed for CI/CD) ===
+# Optional: keep GitHub workflows if needed for CI/CD
 !.github
 !.github/**
