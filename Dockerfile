@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /data
 
 # Copy dependency manifests and tsconfig first
-COPY package.json pnpm-lock.yaml tsconfig.json ./
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
 RUN npm install -g pnpm && \
