@@ -8,8 +8,7 @@
   },
   "packageManager": "pnpm@10.22.0",
   "scripts": {
-    "build": "npm run build:n8n",
-    "build:n8n": "node scripts/build-n8n.mjs",
+    "build": "tsc -p tsconfig.json",
     "build:deploy": "node scripts/build-n8n.mjs",
     "build:docker": "node scripts/build-n8n.mjs && node scripts/dockerize-n8n.mjs",
     "build:docker:coverage": "BUILD_WITH_COVERAGE=true node scripts/build-n8n.mjs && node scripts/dockerize-n8n.mjs",
