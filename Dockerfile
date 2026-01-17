@@ -1,50 +1,29 @@
 # Build stage
-FROM node:22-bullseye-slim AS builder
-
-# Install build dependencies
-RUN apt-get update && apt-get install -y \
-    python3 \
-    build-essential \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
+FROM node:20-bullseye AS builder
 WORKDIR /data
 
-# Copy dependency manifests and tsconfig first
+# Copy manifests first for caching
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
+# Install dependencies (include devDependencies for TypeScript build)
 RUN npm install -g pnpm && \
     pnpm install --no-frozen-lockfile
 
-# Copy the rest of the source
+# Copy the rest of the source (packages, tsconfig, etc.)
 COPY . .
 
 # Build
 RUN pnpm run build
 
 # Production stage
-FROM node:22-bullseye-slim
-
-# Install runtime dependencies
-RUN apt-get update && apt-get install -y \
-    sqlite3 \
-    tini \
-    && rm -rf /var/lib/apt/lists/*
-
+FROM node:20-bullseye AS production
 WORKDIR /data
 
-# Copy built app from builder
-COPY --from=builder /data /data
+# Copy only what’s needed from builder
+COPY --from=builder /data/dist ./dist
+COPY --from=builder /data/node_modules ./node_modules
+COPY --from=builder /data/package.json ./package.json
 
-# Link n8n binary
-RUN ln -s /data/packages/cli/bin/n8n /usr/local/bin/n8n
-
-# Environment
 ENV NODE_ENV=production
-ENV N8N_PORT=5678
-EXPOSE 5678
 
-USER node
-
-ENTRYPOINT ["tini", "--", "n8n"]
+CMD ["node", "dist/index.js"]
