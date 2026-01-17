@@ -1,34 +1,31 @@
 # Whitelist approach: ignore everything, then allow only what Docker builds need
 # This reduces build context from ~900MB to just what's required
 
-# Ignore everything first
+# Ignore everything by default
 *
 
-# Allow package manifest
+# === Core manifests ===
 !package.json
 !pnpm-lock.yaml
-
-# Allow TypeScript config
 !tsconfig.json
 
-# === n8n main image (docker/images/n8n/Dockerfile) ===
+# === Source code (monorepo packages) ===
+!packages
+!packages/**
 !compiled
 !compiled/**
-!THIRD_PARTY_LICENSES.md
-
-# === runners image (docker/images/runners/Dockerfile + Dockerfile.distroless) ===
 !dist
-!dist/task-runner-javascript
-!dist/task-runner-javascript/**
-!packages
-!packages/@n8n
-!packages/@n8n/task-runner-python
-!packages/@n8n/task-runner-python/**
+!dist/**
+!THIRD_PARTY_LICENSES.md
 
 # === Docker build files (entrypoints, configs) ===
 !docker
+!docker/**
 !docker/images
-!docker/images/n8n
+!docker/images/**
 !docker/images/n8n/docker-entrypoint.sh
-!docker/images/runners
 !docker/images/runners/n8n-task-runners.json
+
+# === GitHub workflows (optional, only if needed for CI/CD) ===
+!.github
+!.github/**
